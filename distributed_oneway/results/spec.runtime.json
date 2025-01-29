@@ -1,0 +1,14 @@
+{
+  "environment_variables" : {
+    "{wind}.w.A" : 0.1,
+    "{wind}.w.B" : 0.2,
+    "{wind}.w.p" : 30.0,
+    "{md}.m.d1" : 300.0,
+    "{md}.m.m1" : 600.0,
+    "{spring}.s.c1" : 55
+  },
+  "DataWriter" : [ {
+    "filename" : "outputs.csv",
+    "type" : "CSV"
+  } ]
+}

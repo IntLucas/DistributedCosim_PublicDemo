@@ -1,0 +1,45 @@
+{
+    "fmus": {
+        "{controller}": "../fmus/festival_rmq_controller/rmqfmuv2.1.5",
+        "{md}": "../fmus/md.fmu",
+        "{wind}": "../fmus/wind.fmu",
+        "{spring}": "../fmus/spring.fmu"
+    },
+    "connections": {
+        "{controller}.c.spring_measure": [
+            "{md}.m.springforce"
+        ],
+        "{md}.m.x": [
+            "{controller}.c.x",
+            "{spring}.s.x"
+        ],
+        "{wind}.w.windforce": [
+            "{controller}.c.windforce",
+            "{md}.m.fk"
+        ],
+        "{spring}.s.springforce": [
+            "{controller}.c.sim_springforce"
+        ]
+    },
+    "parameters": {
+        "{wind}.w.A": 0.1,
+        "{wind}.w.B": 0.2,
+        "{wind}.w.p": 30.0,
+        "{md}.m.d1": 300.0, 
+        "{md}.m.m1": 600.0,
+        "{spring}.s.c1": 55
+    },
+    "logVariables": {},
+    "algorithm":{
+        "type":"fixed-step",
+        "size": 0.001
+    },
+    "loggingOn": true,
+    "overrideLogLevel": "DEBUG",
+    "convergenceRelativeTolerance": 0.01,
+    "convergenceAbsoluteTolerance": 0.0,
+    "convergenceAttempts": 5,
+    "startTime": 0.0,
+    "endTime": 10.0,
+    "simulationProgramDelay": true
+}

@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  # Local RabbitMQ server
+  rabbitmq:
+    build: ./rabbitmqserver/
+    container_name: rabbitmq-container
+    image: rabbitmq:3.12-management
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 30s
+      timeout: 30s
+      retries: 3
+    ports:
+      - 5672:5672
+      - 15672:15672
+      - 1883:1883
+    networks:
+      - shated_net  
+
+  # InfluxDB
+#  influx_festival:
+#    image: influxdb:latest
+#    container_name: influx_festival
+#    ports:
+#      - "8086:8086"
+#    networks:
+#      - shated_net  
+
+  # Telegraf
+#  telegraf_festival:
+#    image: telegraf:latest
+#    container_name: telegraf_festival
+#    volumes:
+#      - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro  
+#    networks:
+#      - shated_net  
+
+networks:
+  shated_net:  
+    driver: bridge
