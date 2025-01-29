@@ -82,16 +82,14 @@ Now you are ready to run the simulation.
 
 1. Make sure the required containers are running. If not, start them using: \
    `docker compose up`
-2. Navigate to the Distributed Control Python Directory: \
-   `cd distributed_ctrl_python`
-3. Run the Control Script: \
+2. Run the Control Script: \
    `python3 control.py`
-4. Open a New Terminal and Navigate to the Distributed Oneway Directory: \
+3. Open a New Terminal and Navigate to the Distributed Oneway Directory: \
    `cd distributed_oneway`
-5. Run the Maestro Jar Command: \
+4. Run the Maestro Jar Command: \
    `java -jar maestro.jar import Sg1 -output=results -v --interpret ./scenario.json`
 
-   *You should see an output of `"SIM time to REAL time - windows`" in the terminal.*
+   *You should see an output of `SIM time to REAL time - windows` in the terminal.*
 8.  Wait for the simulation to terminate on its own or `crtl+c` to end it prematurely.
 9.  Exit all the terminals and run `docker compose down` to stop all containers.
 
