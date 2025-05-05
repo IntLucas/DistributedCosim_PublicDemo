@@ -13,7 +13,11 @@ This repository shows an example of distributed co-simulation using the followin
 
 ### Video Demonstration
 
-<iframe src="https://au.cloud.panopto.eu/Panopto/Pages/Embed.aspx?id=5d637acf-6a2d-4475-8cfe-b2d400d1b4a1&autoplay=false&offerviewer=true&showtitle=true&showbrand=false&captions=true&interactivity=all" height="169" width="300" style="border: 1px solid #464646;" allowfullscreen allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="Festival demo" ></iframe>
+<!-- <iframe src="https://au.cloud.panopto.eu/Panopto/Pages/Embed.aspx?id=5d637acf-6a2d-4475-8cfe-b2d400d1b4a1&autoplay=false&offerviewer=true&showtitle=true&showbrand=false&captions=true&interactivity=all" height="169" width="300" style="border: 1px solid #464646;" allowfullscreen allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="Festival demo" ></iframe>
+ -->
+ 
+[![](resources/screenshot.png)](https://au.cloud.panopto.eu/Panopto/Pages/Embed.aspx?id=5d637acf-6a2d-4475-8cfe-b2d400d1b4a1&autoplay=false&offerviewer=true&showtitle=true&showbrand=false&captions=true&interactivity=all)
+
 
 ### Experiment Setup
 
