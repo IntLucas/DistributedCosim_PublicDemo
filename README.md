@@ -52,14 +52,14 @@ The following FMU's are deployed in the co-simulation:
 - **Wind Load:** Exerting a slowly oscillating force on the tower, causing the tower to sway in the wind.  
 - **Controller:** Functioning as a bridge between the co-simulation and the rabbitMQ server which exchanges actuator displacement values and observed force sensor data between the simulated and real-life components of the demo. This is done by utilizing a [Rabbitmq FMU](https://github.com/INTO-CPS-Association/fmu-rabbitmq).  
 
-The Spring FMU is calibrated, such that the FMU and physical spring forces follow each other, with minimal deviation. However, by introducing a disturbance like gently pushing on the tower or rapidly heating up the tower, the two the simulated and observed spring forces begin to diverge. 
+The Spring FMU is calibrated, such that the FMU and physical spring forces follow each other, with minimal deviation. However, by introducing a disturbance like gently pushing on the tower or rapidly heating up the tower, the simulated and observed spring forces begin to diverge. 
 
 ## Setting Up the Co-Simulation
 Before you begin, ensure you have met the following requirements:
 
 - You have installed the latest version of **Python**.
 - You have access to a **command-line interface** (e.g., Command Prompt or Terminal).
-- Your have installed [Docker Desktop](https://www.docker.com/products/docker-desktop/). 
+- You have installed [Docker Desktop](https://www.docker.com/products/docker-desktop/). 
 
 **Follow these steps to set up the Co-simulation:**
 
@@ -99,30 +99,31 @@ Missing dll's causes `rabbitmq.dll java.lang.Exception: Load failed!!!` or `Ente
 To fix it, add the full path of the "fmus\missing_dlls" directory to your "path" user-environment-variables. 
 
 
-## Real-time Graphs Using Influx DB
-This section explain how to add real-time graphs to the co-simulation.
+## Real-time Graphs Using InfluxDB
+This section explains how to add real-time graphs to the co-simulation.
 
-1. Uncomment the telegraf and Influx DB sections from the `docker-compose.yml` file, found in the root folder of this repo.
+1. Uncomment the telegraf and InfluxDB sections from the `docker-compose.yml` file, found in the root folder of this repo.
 2. Restart all containers: \
    `docker compose restart` \
    *The Telegraf container should exit with code 1.*
 
 3. Go to http://localhost:8086/ on your browser
-4. Setup telegraf:
+4. Setup InfluxDB:
    - create a new user
    - organisation: DIGIT-BENCH
    - Bucket: FESTIVAL_DEMO
 
-   - Chose Advanced configuration:
+   - Choose Advanced configuration:
       - Configure new telegraf configuration, chose the FESTIVAL_DEMO bucket.
-   - Search for and chose the AMQP Consumer plugin and click save and test. 
+   - Search for and choose the AMQP Consumer plugin and click save and test. 
    - Copy the telegraf API token *(long string ending with `==`)*
-   - Create a new system variable *(in the windows environment variables)* called `INFLUX_TOKEN` with the API token as the value. *Remember to put the string in brackets*. 
+   - Create a new system variable *(in the windows environment variables)* called `INFLUX_TOKEN` with the API token as the value. *Remember to put the string in "quotation marks"*. 
    
       Alternatively, replace `$INFLUX_TOKEN` with the generated token, in the `telegraf.conf` file.
 
-5. run control.py and execute the cosim as normal.
-6. Go to the InfluxDB dashboard and set-up your graphs
+5. Start the Telegraf container on the docker app.
+6. run `control.py` and execute the co-simulation as normal.
+7. Go to the InfluxDB dashboard and set up your graphs
 
 
 ## Real-time 3D Visualizations
